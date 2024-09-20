@@ -1,0 +1,65 @@
+
+
+
+<%- include('partials/header.ejs'); -%>
+
+
+  <div class="container">
+    <h1>My Books</h1>
+
+   
+
+
+
+    <ul id="postsList">
+
+
+     
+
+        <!-- picture -->
+        <li>
+          <figure><img src="https://covers.openlibrary.org/b/isbn/<%=(book.code)%>.jpg" alt="">
+         </figure>
+       
+         <!-- name of the book (link for details) -->
+         <a  href="/details/<%= book.id %>"><h2><%=book.title%></h2></a>
+          
+          <!-- read date + rating -->
+          <small> readed on : <%=book.rdate %>    |     rating: <%=book.rating %>/10</small>
+          
+          <!-- description  -->
+          <p><%=book.des%></p>
+
+
+          <% notes.forEach((note)=> { %>
+
+            <p><%=note%></p>
+
+            <br>
+
+            <% }); %>
+          
+
+
+        <a class="edit" href="/new/note">+ New Note </a>
+
+
+        </li>
+      
+    </ul>
+
+
+    
+  </div>
+
+
+
+
+
+
+
+  
+<%- include('partials/footer.ejs'); -%>
+
+
+

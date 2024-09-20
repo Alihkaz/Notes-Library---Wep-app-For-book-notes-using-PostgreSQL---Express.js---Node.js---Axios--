@@ -1,0 +1,73 @@
+
+
+
+<%- include('partials/header.ejs'); -%>
+
+
+  <div class="container">
+    <h1>My Books</h1>
+
+    
+
+    <!-- if we are modifying the book readed details -->
+    <% if (locals.books) { %>
+          <!-- book id -->
+          <form id="editForm" method="post" action="/edit">
+          <!-- book ISBN -->
+          <input type="text" name="code" value="<%=books.code %>">
+          <!-- book title -->
+          <input type="text" name="title" value="<%=books.title %>">    
+          <!-- book readed date -->
+          <input type="text" name="rdate" value="<%=books.rdate %>">
+          <!-- book rate -->
+          <input type="text" name="rating" value="<%=books.rating %>">
+          <!-- book description -->
+          <textarea name="des" rows="10"><%=books.des %></textarea>
+
+          <button class="full-width" type="submit">Confirm</button>
+        </form>
+
+        <% }if (locals.bookid) { %>
+
+          <form id="newPostForm" method="post" action="/addnote/<%= bookid %>">       
+           
+            <!-- book Notes -->
+            <textarea name="note" rows="10" placeholder="Note" required></textarea>
+                
+            <button class="full-width" type="submit">Add Note</button>
+
+          </form>
+
+
+  
+        <% } else if(locals.id===1){%>
+          <form id="newPostForm" method="post" action="/add">       
+            <!-- book ISBN -->
+            <input type="text" name="code" placeholder="ISBN" required>
+            <!-- book title -->
+            <input type="text" name="title" placeholder="Title" required>    
+            <!-- book readed date -->
+            <input type="text" name="rdate" placeholder="Readed Date" required>
+            <!-- book rate -->
+            <input type="text" name="rating" placeholder="Rating/10" required>
+            <!-- book description -->
+            <textarea name="des" rows="10" placeholder="Description" required></textarea>
+                
+            <button class="full-width" type="submit">Add</button>
+
+          </form>
+          <% } %>
+
+
+  
+    </div>
+
+
+
+  
+<%- include('partials/footer.ejs'); -%>
+
+
+
+
+
